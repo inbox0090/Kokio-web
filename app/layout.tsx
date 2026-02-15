@@ -1,11 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { headers } from "next/headers";
+import { cookies } from "next/headers";
 import { Anybody, Lexend } from "next/font/google";
 
-import { cookieToInitialState } from "wagmi";
-
-import { config } from "@/config";
 import Web3ModalProvider from "@/context";
 import { cn } from "@/lib/utils";
 import { NavBar } from "@/components/global/nav-bar";
@@ -35,7 +32,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialState = cookieToInitialState(config, headers().get("cookie"));
+  const cookieHeader = cookies().toString();
   return (
     <html
       lang="en"
@@ -47,7 +44,7 @@ export default function RootLayout({
           "flex min-h-screen flex-col bg-beach-sky font-sans antialiased"
         )}
       >
-        <Web3ModalProvider initialState={initialState}>
+        <Web3ModalProvider cookie={cookieHeader}>
           <NavBar />
           <div className="m-0 flex-1 p-0">{children}</div>
           <Footer />
