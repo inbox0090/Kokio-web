@@ -1,6 +1,6 @@
 "use client";
 
-import React, { type ReactNode, useRef } from "react";
+import React, { type ReactNode } from "react";
 import { config, projectId } from "@/config";
 
 import { createWeb3Modal } from "@web3modal/wagmi/react";
@@ -17,8 +17,8 @@ if (projectId) {
   createWeb3Modal({
     wagmiConfig: config,
     projectId,
-    enableAnalytics: true, // Optional - defaults to your Cloud configuration
-    enableOnramp: true, // Optional - false as default
+    enableAnalytics: true,
+    enableOnramp: true,
   });
 }
 
