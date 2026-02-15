@@ -2,13 +2,15 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { Anybody, Lexend } from "next/font/google";
+import dynamic from "next/dynamic";
 
-import Web3ModalProvider from "@/context";
 import { cn } from "@/lib/utils";
 import { NavBar } from "@/components/global/nav-bar";
 import { Footer } from "@/components/global/footer";
 import { Toaster } from "@/components/ui/toaster";
 import Script from "next/script";
+
+const Web3ModalProvider = dynamic(() => import("@/context"), { ssr: false });
 
 const anybody = Anybody({
   subsets: ["latin"],
