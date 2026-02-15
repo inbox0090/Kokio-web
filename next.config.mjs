@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config) => {
-    config.externals.push("pino-pretty", "lokijs", "encoding");
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals.push("pino-pretty", "lokijs", "encoding");
+    }
     return config;
   },
 };

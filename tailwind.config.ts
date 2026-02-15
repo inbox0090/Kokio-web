@@ -1,5 +1,8 @@
-const { fontFamily, fontSize } = require("tailwindcss/defaultTheme");
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
+
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const tailwindcssAnimate = require("tailwindcss-animate");
 
 const config = {
   darkMode: ["class"],
@@ -220,7 +223,7 @@ const config = {
       backgroundImage: ["responsive"],
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;
 
 export default config;
